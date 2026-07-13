@@ -11,11 +11,15 @@ jobs:
     steps:
     - name: Pull and Save Image
       run: |
-        docker pull ghcr.io/lfnovo/open-notebook:v1-latest
-        docker save ghcr.io/lfnovo/open-notebook:v1-latest -o open-notebook.tar
+        # 1. 核心修改：将下载路径改为官方的 surrealdb 镜像
+        docker pull surrealdb/surrealdb:latest
+        # 2. 核心修改：将镜像打包，并命名为 surrealdb.tar
+        docker save surrealdb/surrealdb:latest -o surrealdb.tar
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: open-notebook-image
-        path: open-notebook.tar
+        # 3. 这里的名字改不改都可以，改成 surrealdb-image 方便你认出来
+        name: surrealdb-image
+        path: surrealdb.tar
+
 
