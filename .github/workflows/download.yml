@@ -11,14 +11,15 @@ jobs:
     steps:
     - name: Pull and Save Image
       run: |
-        # 指定拉取 2.2.6 版本数据库
-        docker pull surrealdb/surrealdb:v2.2.6
-        docker save surrealdb/surrealdb:v2.2.6 -o surrealdb-v226.tar
+        # 强制拉取兼容性最高的 1.5.4 稳定版数据库
+        docker pull surrealdb/surrealdb:v1.5.4
+        docker save surrealdb/surrealdb:v1.5.4 -o surrealdb-v1.tar
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: surrealdb-v226-image
-        path: surrealdb-v226.tar
+        name: surrealdb-v1-image
+        path: surrealdb-v1.tar
+
 
 
 
