@@ -11,15 +11,14 @@ jobs:
     steps:
     - name: Pull and Save Image
       run: |
-        # 1. 核心修改：将下载路径改为官方的 surrealdb 镜像
-        docker pull surrealdb/surrealdb:latest
-        # 2. 核心修改：将镜像打包，并命名为 surrealdb.tar
-        docker save surrealdb/surrealdb:latest -o surrealdb.tar
+        # 指定拉取 2.2.6 版本数据库
+        docker pull surrealdb/surrealdb:v2.2.6
+        docker save surrealdb/surrealdb:v2.2.6 -o surrealdb-v226.tar
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        # 3. 这里的名字改不改都可以，改成 surrealdb-image 方便你认出来
-        name: surrealdb-image
-        path: surrealdb.tar
+        name: surrealdb-v226-image
+        path: surrealdb-v226.tar
+
 
 
