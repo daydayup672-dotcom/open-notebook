@@ -11,10 +11,11 @@ jobs:
     steps:
     - name: Pull and Save Image
       run: |
-        docker pull ghcr.io/open-notebook/open-notebook:latest
-        docker save ghcr.io/open-notebook/open-notebook:latest -o open-notebook.tar
+        docker pull ghcr.io/lfnovo/open-notebook:v1-latest
+        docker save ghcr.io/lfnovo/open-notebook:v1-latest -o open-notebook.tar
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: open-notebook-image
         path: open-notebook.tar
+
